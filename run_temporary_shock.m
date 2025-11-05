@@ -75,22 +75,22 @@ scenario_path_baseline = scenario_path;
 SET_baseline = SET;
 
 % Check if the relevant folder exist
-if ~exist(strcat("output\temporary_shock\",iso2), 'dir')
-    mkdir(strcat("output\temporary_shock\",iso2)); % Create the folder
+if ~exist(strcat("output/temporary_shock/",iso2), 'dir')
+    mkdir(strcat("output/temporary_shock/",iso2)); % Create the folder
 end
-save(['output\temporary_shock\' iso2 '\baseline_' extractAfter(selected_shocks{1},'eps_')],"scenario_path_baseline","SET_baseline");
+save(['output/temporary_shock/' iso2 '/baseline_' extractAfter(selected_shocks{1},'eps_')],"scenario_path_baseline","SET_baseline");
 targetpath1 = [];
 targetnum1 = [];
 if  contains(selected_shocks,'eps_mm')
     eval(['targetpath1 = scenario_path(SET.variable.eps_m,1:' num2str(number_of_periods) ');']);
     eval(['targetnum1 = SET.variable.eps_m;']);
-    save(['output\temporary_shock\' iso2 '\targetpath1_eps_m' ],"targetpath1","targetnum1");
+    save(['output/temporary_shock/' iso2 '/targetpath1_eps_m' ],"targetpath1","targetnum1");
 else
     for targp = 1:length(selected_shocks)
         eval(['targetpath1 = [targetpath1; scenario_path(SET.variable.' extractAfter(selected_shocks{targp},'eps_') ',1:' num2str(number_of_periods) ')];']); % Check that it becomes a matrix once num_of_periods>1
         eval(['targetnum1 = [targetnum1; SET.variable.' extractAfter(selected_shocks{targp},'eps_') '];']);
     end
-    save(['output\temporary_shock\' iso2 '\targetpath1_' extractAfter(selected_shocks{1},'eps_')],"targetpath1","targetnum1");
+    save(['output/temporary_shock/' iso2 '/targetpath1_' extractAfter(selected_shocks{1},'eps_')],"targetpath1","targetnum1");
 end
 
 % Save the original parameter values
@@ -139,8 +139,8 @@ for exercise_ = 1:length(exercises_fields)
     
     eval(['scenario_path_',  char(exercises_fields(exercise_)), '= scenario_path;']);
     eval(['SET_',  char(exercises_fields(exercise_)), '= SET;']);
-    % eval(['save output\temporary_shock\',iso2,'\', char(exercises_fields(exercise_)),'_ait_',num2str(n_ait_parameter), ' scenario_path_',  char(exercises_fields(exercise_)), ' SET_',  char(exercises_fields(exercise_))]);
-    eval(['save output\temporary_shock\',iso2,'\', char(exercises_fields(exercise_)), '_', extractAfter(selected_shocks{1},'eps_'), ' scenario_path_',  char(exercises_fields(exercise_)), ' SET_',  char(exercises_fields(exercise_))]);
+    % eval(['save output/temporary_shock/',iso2,'/', char(exercises_fields(exercise_)),'_ait_',num2str(n_ait_parameter), ' scenario_path_',  char(exercises_fields(exercise_)), ' SET_',  char(exercises_fields(exercise_))]);
+    eval(['save output/temporary_shock/',iso2,'/', char(exercises_fields(exercise_)), '_', extractAfter(selected_shocks{1},'eps_'), ' scenario_path_',  char(exercises_fields(exercise_)), ' SET_',  char(exercises_fields(exercise_))]);
 end
 
 
@@ -158,19 +158,19 @@ fontName = 'Times New Roman';
 % exercise and the same monetary policy rule
 
 % Check if the relevant folder exists
-if ~exist(strcat("graphs\temporary_shock\",iso2), 'dir')
-    mkdir(strcat("graphs\temporary_shock\",iso2)); % Create the folder
+if ~exist(strcat("graphs/temporary_shock/",iso2), 'dir')
+    mkdir(strcat("graphs/temporary_shock/",iso2)); % Create the folder
 end
 
 % Import the results 
 clearvars -except exercises exercises_fields source iso2 n_ait_parameter vcell annualisation_cell titlecell selected_shocks folder_path fontSize fontName obs_units
-load(['output\temporary_shock\' iso2 '\baseline_' extractAfter(selected_shocks{1},'eps_') '.mat'])
+load(['output/temporary_shock/' iso2 '/baseline_' extractAfter(selected_shocks{1},'eps_') '.mat'])
 for i = 1:length(exercises_fields)
-    load(['output\temporary_shock\' iso2 '\' exercises_fields{i} '_' extractAfter(selected_shocks{1},'eps_') '.mat'])
+    load(['output/temporary_shock/' iso2 '/' exercises_fields{i} '_' extractAfter(selected_shocks{1},'eps_') '.mat'])
 end
 
 % Figure
-figure_name = strcat(folder_path,'\graphs\temporary_shock\',iso2,'\',iso2,'_temp_shock_',selected_shocks{1});
+figure_name = strcat(folder_path,'/graphs/temporary_shock/',iso2,'/',iso2,'_temp_shock_',selected_shocks{1});
 fprintf('Saving figures, please wait...\n %s.jpg\n %s.eps\n', figure_name, figure_name);
 close all;
 jj=0;figure;

@@ -30,7 +30,7 @@ end
 if i == 1
     eval(['targetpath1    = +' num2str(target_change_size) '.*ones(1,' num2str(number_of_periods) ')']) ;%- log(y_bar(targetnum1));        % Desired change in commodity prices (in deviation from steady state)
 else
-    load(['Simulations\output\' iso2 '\targetath1_' extractAfter(selected_shocks{1},'eps_') '.mat'])
+    load(['Simulations/output/' iso2 '/targetath1_' extractAfter(selected_shocks{1},'eps_') '.mat'])
 end
 % Having set the scenario, now simulate it
 scenario_path = scenario_multiple(oo_, M_, out, horizon, exonum1, M_.exo_nbr, ...

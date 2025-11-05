@@ -294,11 +294,11 @@ for exercise_ = 1:length(exercises_fields)
 
     dyn_in = dyn_in.oo_.var_list;
 
-    if ~exist(strcat("output\permanent_shock\",iso2), 'dir')
-        mkdir(strcat("output\permanent_shock\",iso2)); % Create the folder
+    if ~exist(strcat("output/permanent_shock/",iso2), 'dir')
+        mkdir(strcat("output/permanent_shock/",iso2)); % Create the folder
     end
 
-    eval(strcat("save output\permanent_shock\",iso2,"\", char(exercises_fields(exercise_)), eval(strcat("exercises.",char(exercises_fields(exercise_)),".name_save")),"_",eval(strcat("exercises.",char(exercises_fields(exercise_)),".foresight")),  " dyn_in y_0"));
+    eval(strcat("save output/permanent_shock/",iso2,"/", char(exercises_fields(exercise_)), eval(strcat("exercises.",char(exercises_fields(exercise_)),".name_save")),"_",eval(strcat("exercises.",char(exercises_fields(exercise_)),".foresight")),  " dyn_in y_0"));
 
 end
 
@@ -321,20 +321,20 @@ fontName = 'Times New Roman';
 % exercise and the same monetary policy rule
 
 % Check if the relevant folder exists
-if ~exist(strcat("graphs\permanent_shock\",iso2), 'dir')
-    mkdir(strcat("graphs\permanent_shock\",iso2)); % Create the folder
+if ~exist(strcat("graphs/permanent_shock/",iso2), 'dir')
+    mkdir(strcat("graphs/permanent_shock/",iso2)); % Create the folder
 end
 
 % Import the results
 clearvars -except exercises exercises_fields source iso2 n_ait_parameter vcell annualisation_cell titlecell selected_shocks folder_path fontSize fontName obs_units horizon lin_style
 for i = 1:length(exercises_fields)
-    load(['output\permanent_shock\' iso2 '\' exercises_fields{i} eval(strcat("exercises.",exercises_fields{i},".name_save")) '_' eval(strcat("exercises.",exercises_fields{i},".foresight")) '.mat'])
+    load(['output/permanent_shock/' iso2 '/' exercises_fields{i} eval(strcat("exercises.",exercises_fields{i},".name_save")) '_' eval(strcat("exercises.",exercises_fields{i},".foresight")) '.mat'])
     eval(strcat("dyn_in_",exercises_fields{i},"_", iso2,"= dyn_in;"));
     eval(strcat("y_0_",exercises_fields{i},"_", iso2,"= y_0;"));
 end
 
 % Figure
-figure_name = strcat(folder_path,'\graphs\permanent_shock\',iso2,'\',iso2,'_struct_shock_',exercises.id_2.foresight);
+figure_name = strcat(folder_path,'/graphs/permanent_shock/',iso2,'/',iso2,'_struct_shock_',exercises.id_2.foresight);
 fprintf('Generating figures:\n %s.jpg\n %s.eps\n', figure_name, figure_name);
 close all;
 jj=0;figure;

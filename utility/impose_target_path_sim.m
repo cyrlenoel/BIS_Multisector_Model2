@@ -6,9 +6,9 @@ if i == 1
     end
 else
     if contains(eval(['exercises.', char(exercises_fields(exercise_)) '.targetvar1']),'mm')
-        load(['output\temporary_shock\' iso2 '\targetpath1_eps_m.mat']);
+        load(['output/temporary_shock/' iso2 '/targetpath1_eps_m.mat']);
     else
-        load(['output\temporary_shock\' iso2 '\targetpath1_' eval(['exercises.', char(exercises_fields(exercise_)) '.targetvar1']), '.mat']);
+        load(['output/temporary_shock/' iso2 '/targetpath1_' eval(['exercises.', char(exercises_fields(exercise_)) '.targetvar1']), '.mat']);
     end
 end
 end

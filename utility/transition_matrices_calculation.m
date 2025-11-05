@@ -69,8 +69,8 @@ update_all_steady_states_for_Dynare ;
 
 
 % Extract the vector of steady-state-values and create constant matrix
-save('output\test_ss.mat', '-regexp','^ss_')
-test_ss = load('output\test_ss.mat');
+save('output/test_ss.mat', '-regexp','^ss_')
+test_ss = load('output/test_ss.mat');
 y_bar = [] ;
 for r = 1:length(oo_.var_list)
     try y_bar(r,1) = test_ss.(['ss_' strrep(oo_.var_list{r,1},'_flex','')]);, catch y_bar(r,1) = 1;, end

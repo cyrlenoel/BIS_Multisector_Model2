@@ -32,7 +32,7 @@ if i == 1
         eval(strcat("targetpath1(",num2str(tp_),",1:",num2str(number_of_periods),")    = +", num2str(target_change_size(tp_)), ".*ones(1,", num2str(number_of_periods), ");"));%- log(y_bar(targetnum1));        % Desired change in commodity prices (in deviation from steady state)
     end
 else
-    load(['Simulations\output\' iso2 '\targetpath1_' extractBefore(extractAfter(selected_shocks{1},'eps_'),'_') '.mat'])
+    load(['Simulations/output/' iso2 '/targetpath1_' extractBefore(extractAfter(selected_shocks{1},'eps_'),'_') '.mat'])
 end
 
 % Having set the scenario, now simulate it

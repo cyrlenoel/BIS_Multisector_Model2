@@ -16,8 +16,8 @@ elseif iscell(d_path)
 end
 
 % Check if the relevant folder exist
-if ~exist(strcat(folder_path,'\output'), 'dir')
-    mkdir(strcat(folder_path,'\output')); % Create the folder
+if ~exist(strcat(folder_path,'/output'), 'dir')
+    mkdir(strcat(folder_path,'/output')); % Create the folder
 end
 
 % Settings about the sectors
@@ -62,7 +62,7 @@ SET.x0    = log(ss_params(1 : end-nsectors*2-(nsectors-1))) ;
 SET.x0    = [SET.x0; zeros(nsectors-1,1)] ;
 SET.x0    = SET.x0(2:end) ;
 
-save output\steady_state_results ss_params ;
+save output/steady_state_results ss_params ;
 
 ss = update_steady_state_initial(SET,ss_params) ;   % Fill out the steady state
 
@@ -103,8 +103,8 @@ dyn_in.solve = 1 ;
 dyn_in.options_ = options_ ;
 
 % Extract the vector of steady-state-values and create constant matrix
-save('output\test_ss.mat', '-regexp','^ss_')
-test_ss = load('output\test_ss.mat');
+save('output/test_ss.mat', '-regexp','^ss_')
+test_ss = load('output/test_ss.mat');
 y_bar = [] ;
 for r = 1:length(oo_.var_list)
     try y_bar(r,1) = test_ss.(['ss_' strrep(oo_.var_list{r,1},'_flex','')]);, catch y_bar(r,1) = 1;, end
@@ -141,6 +141,6 @@ out.mats.y_bar  = y_bar ;
 
 % The order of variables is in M_.endo_names
 
-save output\test_dynare out ;
+save output/test_dynare out ;
 
 
