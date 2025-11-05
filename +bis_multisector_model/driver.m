@@ -9,9 +9,9 @@ tic0 = tic;
 global M_ options_ oo_ estim_params_ bayestopt_ dataset_ dataset_info estimation_info ys0_ ex0_
 options_ = [];
 M_.fname = 'bis_multisector_model';
-M_.dynare_version = '5.5';
-oo_.dynare_version = '5.5';
-options_.dynare_version = '5.5';
+M_.dynare_version = '5.5-arm64';
+oo_.dynare_version = '5.5-arm64';
+options_.dynare_version = '5.5-arm64';
 %
 % Some global variables initialization
 %

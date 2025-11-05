@@ -2,10 +2,10 @@
 // @#define nsector = 20
 // @#define n_ait_loop = 1
 
-@#include "utility\variables.m"
-@#include "utility\variables_exo.m"
+@#include "utility/variables.m"
+@#include "utility/variables_exo.m"
 
-@#include "utility\parameters.m"
+@#include "utility/parameters.m"
 
 verbatim;
 
@@ -263,7 +263,7 @@ sig_mm                   = d_sig_mm;
 
 // ========================================================================
 
-@#include "utility\equations_combined.mod"
+@#include "utility/equations_combined.mod"
 
 steady ;
 
