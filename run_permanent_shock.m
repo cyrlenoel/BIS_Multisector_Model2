@@ -36,7 +36,9 @@ else % if not, ask user
 end
 
 % Select the country and source
-[iso2, source] = f_select_country_source(); % function saved under `input\progs'
+% [iso2, source] = f_select_country_source(); % function saved under `input\progs'
+iso2 = 'GB';
+source = 'oecd';
 % `iso2' and `source` must be entered by the user when prompted. Available
 % options and instructions are provided in the prompts.
 source = ['_' source];
